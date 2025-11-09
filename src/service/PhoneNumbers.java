@@ -2,11 +2,11 @@ package service;
 
 import java.util.Set;
 
-public class PhoneNumber {
+public class PhoneNumbers {
     private Set<String> numbers;
 
-    public PhoneNumber(Set<String> number) {
-        this.numbers = number;
+    public PhoneNumbers(Set<String> numbers) {
+        this.numbers = numbers;
     }
 
     public Set<String> getNumbers() {
