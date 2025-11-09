@@ -20,7 +20,7 @@ public class PhoneNumbers {
             bulder.append(String.format("+%s-(%s)-%s-%s-%s",number.substring(0, 1),
                     number.substring(1, 4), number.substring(4, 7), number.substring(7, 9), number.substring(9, 11))).append(", ");
         }
-        bulder.setCharAt(bulder.length() - 1, '.');
+        bulder.setCharAt(bulder.length() - 2, '.');
         return bulder.toString();
     }
 }

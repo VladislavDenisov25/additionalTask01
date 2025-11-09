@@ -1,9 +1,6 @@
 package service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class PhoneBook {
     private static final HashMap<Person, PhoneNumbers> phoneBook = new HashMap<>();
@@ -45,5 +42,14 @@ public class PhoneBook {
             validationNumbers.add(number);
         }
         return validationNumbers;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for (Map.Entry<Person, PhoneNumbers> entry : phoneBook.entrySet()) {
+            builder.append(entry.getKey().toString()).append(" ").append(entry.getValue().toString()).append("\n");
+        }
+        return builder.toString();
     }
 }
