@@ -7,8 +7,14 @@ public class PhoneBook {
 
     public void addPersonOnPhoneBook(String firstName, String lastName, String... arrayNumbers) {
 
-        HashSet<String> validationNumbers = containsValueOnPhoneBook(arrayNumbers);
         Person person = new Person(firstName, lastName);
+
+        HashSet<String> validationNumbers = containsValueOnPhoneBook(arrayNumbers);
+        if (validationNumbers == null){
+            System.out.println("Контакт не добавлен, номер принадлежит другому контакту");
+            return;
+        }
+
 
         if (containsKeyOnPhoneBook(person)) {
             PhoneNumbers numbers = phoneBook.get(person);
@@ -36,7 +42,7 @@ public class PhoneBook {
             for (PhoneNumbers value : values) {
                 if (value.getNumbers().contains(number)) {
                     System.out.println("Номер: " + number + " принадлежит другому человеку или уже добавлен");
-                    break;
+                    return null;
                 }
             }
             validationNumbers.add(number);
