@@ -29,11 +29,15 @@ public class Person {
 
     @Override
     public boolean equals(Object obj) {
-        return Objects.equals(this.firstName, firstName) && Objects.equals(this.getLastName(), getLastName());
+            if (this == obj) return true; // Проверка на ссылку на тот же объект
+            if (obj == null || getClass() != obj.getClass()) return false; // Проверка типа
+            Person other = (Person) obj; // Приведение типа
+            return Objects.equals(this.firstName, other.firstName)
+                    && Objects.equals(this.lastName, other.lastName);
     }
 
     @Override
     public int hashCode() {
-        return 31 * this.firstName.hashCode() * this.lastName.hashCode();
+        return Objects.hash(firstName, lastName);
     }
 }

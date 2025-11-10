@@ -12,7 +12,7 @@ public class PhoneBook {
 
         if (validationNumbers.isEmpty()) {
             phoneBook.put(person, new PhoneNumbers(new HashSet<>()));
-            System.out.println("Контакт добавлен, без контактного номер телефона!");
+            System.out.println("Персона добавлена, без контактного номер телефона!");
             return;
         }
 
@@ -44,7 +44,7 @@ public class PhoneBook {
                 number.add(valid);
             }
         } else {
-            System.out.printf("Контакт: %s не найден в телефонной книге!");
+            System.out.printf("Персона: %s не найден в телефонной книге!");
         }
     }
 
@@ -53,8 +53,18 @@ public class PhoneBook {
             PhoneNumbers entryValue = entry.getValue();
             for (String number : entryValue.getNumbers()) {
                 if (phoneNumber.equals(number)){
-                    System.out.printf("Номер телефона: %s принадлежит контакту: %s", phoneNumber, entry.getKey().toString());
+                    System.out.printf("Номер телефона: %s принадлежит персоне: %s", phoneNumber, entry.getKey().toString());
                 }
+            }
+        }
+    }
+
+    public void findInNumbersPhoneBook(String firstName, String lastName){
+
+        Person person = new Person(firstName, lastName);
+        for (Map.Entry<Person, PhoneNumbers> entry : phoneBook.entrySet()) {
+            if (entry.getKey().equals(person)){
+                System.out.println(entry.getValue().toString());
             }
         }
     }
@@ -71,8 +81,9 @@ public class PhoneBook {
         for (String number : arrayNumbers) {
             for (PhoneNumbers value : values) {
                 if (value.getNumbers().contains(number)) {
-                    System.out.println("Номер: " + number + " принадлежит другому человеку или уже добавлен!");
-                    return new HashSet<>();
+                    System.out.println("Номер: " + number + " не будет добавлен, он принадлежит другой персоне или уже добавлен!");
+                  //  return new HashSet<>();
+                    break;
                 }
             }
             validationNumbers.add(number);
