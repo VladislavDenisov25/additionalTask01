@@ -10,21 +10,17 @@ public class PhoneBook {
         Person person = new Person(firstName, lastName);
         HashSet<String> validationNumbers = containsValueInPhoneBook(arrayNumbers);
 
-        if (validationNumbers.isEmpty()) {
-            phoneBook.put(person, new PhoneNumbers(new HashSet<>()));
-            System.out.println("Персона добавлена, без контактного номер телефона!");
-            return;
-        }
-
         if (containsKeyInPhoneBook(person)) {
             PhoneNumbers numbers = phoneBook.get(person);
             Set<String> number = numbers.getNumbers();
-            for (String valid : validationNumbers) {
-                number.add(valid);
-            }
+                for (String valid : validationNumbers) {
+                    number.add(valid);
+                }
+            System.out.printf("Персона: %s добавлена ранее, к ней были добавлены номера: %s\n", person.toString(), validationNumbers.toString());
         } else {
             PhoneNumbers numbers = new PhoneNumbers(validationNumbers);
             phoneBook.put(person, numbers);
+            System.out.printf("Персона: %s добавлена, к ней были добавлены номера: %s\n", person.toString(), numbers.toString());
         }
     }
 
@@ -44,7 +40,7 @@ public class PhoneBook {
                 number.add(valid);
             }
         } else {
-            System.out.printf("Персона: %s не найден в телефонной книге!");
+            System.out.printf("Персона: %s не найдена в телефонной книге!\n");
         }
     }
 
@@ -53,7 +49,7 @@ public class PhoneBook {
             PhoneNumbers entryValue = entry.getValue();
             for (String number : entryValue.getNumbers()) {
                 if (phoneNumber.equals(number)){
-                    System.out.printf("Номер телефона: %s принадлежит персоне: %s", phoneNumber, entry.getKey().toString());
+                    System.out.printf("Номер телефона: %s принадлежит персоне: %s\n", phoneNumber, entry.getKey().toString());
                 }
             }
         }
@@ -81,12 +77,16 @@ public class PhoneBook {
         for (String number : arrayNumbers) {
             for (PhoneNumbers value : values) {
                 if (value.getNumbers().contains(number)) {
-                    System.out.println("Номер: " + number + " не будет добавлен, он принадлежит другой персоне или уже добавлен!");
+                    System.out.println("Номер: " + number + " не будет добавлен, он принадлежит другой персоне или уже добавлен!\n");
                   //  return new HashSet<>();
                     break;
                 }
             }
             validationNumbers.add(number);
+        }
+
+        if (validationNumbers.isEmpty()){
+            validationNumbers = new HashSet<>();
         }
         return validationNumbers;
     }

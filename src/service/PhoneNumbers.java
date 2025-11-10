@@ -13,10 +13,11 @@ public class PhoneNumbers {
         return numbers;
     }
 
+
     @Override
     public String toString() {  // +7-(999)-123-45-67
 
-        if (numbers.isEmpty()){
+        if (numbers.isEmpty() || numbers == null){
             return " ";
         }
         StringBuilder bulder = new StringBuilder();
