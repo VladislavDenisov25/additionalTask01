@@ -5,8 +5,8 @@ import constants.ConstantsApp;
 import java.util.Objects;
 
 public class Person {
-    private String firstName;
-    private String lastName;
+    private final String firstName;
+    private final String lastName;
 
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
@@ -28,9 +28,9 @@ public class Person {
 
     @Override
     public boolean equals(Object obj) {
-            if (this == obj) return true; // Проверка на ссылку на тот же объект
-            if (obj == null || getClass() != obj.getClass()) return false; // Проверка типа
-            Person other = (Person) obj; // Приведение типа
+            if (this == obj) return true;
+            if (obj == null || getClass() != obj.getClass()) return false;
+            Person other = (Person) obj;
             return Objects.equals(this.firstName, other.firstName)
                     && Objects.equals(this.lastName, other.lastName);
     }

@@ -15,14 +15,12 @@ public class PhoneBook {
         if (containsKeyInPhoneBook(person)) {
             PhoneNumbers numbers = phoneBook.get(person);
             Set<String> number = numbers.getNumbers();
-                for (String valid : validationNumbers) {
-                    number.add(valid);
-                }
-            System.out.printf(ConstantsApp.ADD_PERSON_PHONE_BOOK_INFO_1, person.toString(), validationNumbers.toString());
+            number.addAll(validationNumbers);
+            System.out.printf(ConstantsApp.ADD_PERSON_PHONE_BOOK_INFO_1, person, validationNumbers);
         } else {
             PhoneNumbers numbers = new PhoneNumbers(validationNumbers);
             phoneBook.put(person, numbers);
-            System.out.printf(ConstantsApp.ADD_PERSON_PHONE_BOOK_INFO_2, person.toString(), numbers.toString());
+            System.out.printf(ConstantsApp.ADD_PERSON_PHONE_BOOK_INFO_2, person, numbers);
         }
     }
 
@@ -38,9 +36,7 @@ public class PhoneBook {
 
             PhoneNumbers numbers = phoneBook.get(person);
             Set<String> number = numbers.getNumbers();
-            for (String valid : validationNumbers) {
-                number.add(valid);
-            }
+            number.addAll(validationNumbers);
         } else {
             System.out.printf(ConstantsApp.PERSON_NOT_FOUND);
         }

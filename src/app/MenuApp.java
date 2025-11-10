@@ -37,7 +37,7 @@ public class MenuApp {
 
     private void addPerson(){
         String[] personName = readPersonName();
-        StringBuilder bulder = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         String number = readLine(ConstantsApp.INPUT_PHONE_NUMBERS);
         String[] numbers = number.split(ConstantsApp.SPACE);
         phoneBook.addPersonInPhoneBook(personName[0], personName[1], numbers);

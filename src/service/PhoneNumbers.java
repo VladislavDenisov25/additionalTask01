@@ -5,7 +5,7 @@ import constants.ConstantsApp;
 import java.util.Set;
 
 public class PhoneNumbers {
-    private Set<String> numbers;
+    private final Set<String> numbers;
 
     public PhoneNumbers(Set<String> numbers) {
         this.numbers = numbers;
@@ -18,13 +18,13 @@ public class PhoneNumbers {
     @Override
     public String toString() {  // +7-(999)-123-45-67
 
-        if (numbers.isEmpty() || numbers == null) {
+        if (numbers.isEmpty()) {
             return ConstantsApp.SPACE;
         }
         StringBuilder bulder = new StringBuilder();
         for (String number : numbers) {
             bulder.append(String.format(ConstantsApp.NUMBER_FORMAT,
-                    number.substring(0, 1), number.substring(1, 4), number.substring(4, 7),
+                    number.charAt(0), number.substring(1, 4), number.substring(4, 7),
                     number.substring(7, 9), number.substring(9, 11))).append(ConstantsApp.COMMA);
 
         }
