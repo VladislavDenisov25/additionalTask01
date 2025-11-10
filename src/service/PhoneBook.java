@@ -5,10 +5,10 @@ import java.util.*;
 public class PhoneBook {
     private static final HashMap<Person, PhoneNumbers> phoneBook = new HashMap<>();
 
-    public void addPersonOnPhoneBook(String firstName, String lastName, String... arrayNumbers) {
+    public void addPersonInPhoneBook(String firstName, String lastName, String... arrayNumbers) {
 
         Person person = new Person(firstName, lastName);
-        HashSet<String> validationNumbers = containsValueOnPhoneBook(arrayNumbers);
+        HashSet<String> validationNumbers = containsValueInPhoneBook(arrayNumbers);
 
         if (validationNumbers.isEmpty()) {
             phoneBook.put(person, new PhoneNumbers(new HashSet<>()));
@@ -16,7 +16,7 @@ public class PhoneBook {
             return;
         }
 
-        if (containsKeyOnPhoneBook(person)) {
+        if (containsKeyInPhoneBook(person)) {
             PhoneNumbers numbers = phoneBook.get(person);
             Set<String> number = numbers.getNumbers();
             for (String valid : validationNumbers) {
@@ -31,9 +31,9 @@ public class PhoneBook {
     public void addPhoneNumbers(String firstName, String lastName, String phoneNumber) {
 
         Person person = new Person(firstName, lastName);
-        if (containsKeyOnPhoneBook(person)) {
+        if (containsKeyInPhoneBook(person)) {
 
-            HashSet<String> validationNumbers = containsValueOnPhoneBook(new String[]{phoneNumber});
+            HashSet<String> validationNumbers = containsValueInPhoneBook(new String[]{phoneNumber});
             if (validationNumbers.isEmpty()){
                 return;
             }
@@ -48,11 +48,22 @@ public class PhoneBook {
         }
     }
 
-    private boolean containsKeyOnPhoneBook(Person person) {
+    public void findInPersonPhoneBook(String phoneNumber){
+        for (Map.Entry<Person, PhoneNumbers> entry : phoneBook.entrySet()) {
+            PhoneNumbers entryValue = entry.getValue();
+            for (String number : entryValue.getNumbers()) {
+                if (phoneNumber.equals(number)){
+                    System.out.printf("Номер телефона: %s принадлежит контакту: %s", phoneNumber, entry.getKey().toString());
+                }
+            }
+        }
+    }
+
+    private boolean containsKeyInPhoneBook(Person person) {
         return phoneBook.containsKey(person);
     }
 
-    private HashSet<String> containsValueOnPhoneBook(String[] arrayNumbers) {
+    private HashSet<String> containsValueInPhoneBook(String[] arrayNumbers) {
 
         HashSet<String> validationNumbers = new HashSet<>();
         Collection<PhoneNumbers> values = phoneBook.values();
