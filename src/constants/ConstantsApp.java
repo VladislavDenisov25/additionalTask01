@@ -19,7 +19,7 @@ public class ConstantsApp {
     public static final String INPUT_NUMBER_MENU = "Введите цифру главного меню: ";
     public static final String INPUT_PHONE_NUMBERS = """
             Введите номер(а) телефона(ов) персоны, в формате "89105559900"
-            Если номеров несколько вводите их через пробел: 
+            Если номеров несколько вводите их через пробел:
             """;
 
     public static final String INPUT_PHONE_NUMBER = "Введите номер телефона: ";
