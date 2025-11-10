@@ -8,13 +8,13 @@ public class PhoneBook {
     public void addPersonOnPhoneBook(String firstName, String lastName, String... arrayNumbers) {
 
         Person person = new Person(firstName, lastName);
-
         HashSet<String> validationNumbers = containsValueOnPhoneBook(arrayNumbers);
-        if (validationNumbers == null){
-            System.out.println("Контакт не добавлен, номер принадлежит другому контакту");
+
+        if (validationNumbers.isEmpty()) {
+            phoneBook.put(person, new PhoneNumbers(new HashSet<>()));
+            System.out.println("Контакт добавлен, без контактного номер телефона!");
             return;
         }
-
 
         if (containsKeyOnPhoneBook(person)) {
             PhoneNumbers numbers = phoneBook.get(person);
@@ -26,7 +26,26 @@ public class PhoneBook {
             PhoneNumbers numbers = new PhoneNumbers(validationNumbers);
             phoneBook.put(person, numbers);
         }
+    }
 
+    public void addPhoneNumbers(String firstName, String lastName, String phoneNumber) {
+
+        Person person = new Person(firstName, lastName);
+        if (containsKeyOnPhoneBook(person)) {
+
+            HashSet<String> validationNumbers = containsValueOnPhoneBook(new String[]{phoneNumber});
+            if (validationNumbers.isEmpty()){
+                return;
+            }
+
+            PhoneNumbers numbers = phoneBook.get(person);
+            Set<String> number = numbers.getNumbers();
+            for (String valid : validationNumbers) {
+                number.add(valid);
+            }
+        } else {
+            System.out.printf("Контакт: %s не найден в телефонной книге!");
+        }
     }
 
     private boolean containsKeyOnPhoneBook(Person person) {
@@ -41,8 +60,8 @@ public class PhoneBook {
         for (String number : arrayNumbers) {
             for (PhoneNumbers value : values) {
                 if (value.getNumbers().contains(number)) {
-                    System.out.println("Номер: " + number + " принадлежит другому человеку или уже добавлен");
-                    return null;
+                    System.out.println("Номер: " + number + " принадлежит другому человеку или уже добавлен!");
+                    return new HashSet<>();
                 }
             }
             validationNumbers.add(number);
