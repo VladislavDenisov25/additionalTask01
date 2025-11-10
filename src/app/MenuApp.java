@@ -10,7 +10,7 @@ public class MenuApp {
     private final PhoneBook phoneBook = new PhoneBook();
 
     public void run() {
-        System.out.println("Добро пожаловать в программу \"Телефонная книга\"");
+        System.out.println("Добро пожаловать в программу \"Телефонная книга\"\n");
         while (true) {
             System.out.print("""
                     Главное меню:
@@ -19,7 +19,7 @@ public class MenuApp {
                     3. Поиск персоны по телефонному номеру.
                     4. Поиск всех телефонов по персоне.
                     5. Вывод всех записей телефонной книги.
-                    6. Выход из программы.
+                    6. Выход из программы.\n
                     """);
             int number = readInt("Введите цифру главного меню: ");
 
@@ -54,21 +54,24 @@ public class MenuApp {
         phoneBook.addPersonInPhoneBook(firstName, lastName, numbers);
     }
 
-//    private void addPhoneNumber(){
-//
-//        phoneBook.addPhoneNumbers();
-//    }
-//
-//    private void findPerson(){
-//
-//        phoneBook.findInPersonPhoneBook();
-//    }
-//
-//    private void findPhoneNumbers(){
-//
-//
-//        phoneBook.findInNumbersPhoneBook();
-//    }
+    private void addPhoneNumber(){
+        String firstName = readLine("Введите имя персоны: ");
+        String lastName = readLine("Введите фамилию персоны: ");
+        String number = readLine("Введите номер телефона которой будет добавлен персоне: ");
+        phoneBook.addPhoneNumbers(firstName, lastName, number);
+    }
+
+    private void findPerson(){
+        String number = readLine("Введите номер телефона по которому будет поиск персоны: ");
+        phoneBook.findInPersonPhoneBook(number);
+    }
+
+    private void findPhoneNumbers(){
+        String firstName = readLine("Введите имя персоны: ");
+        String lastName = readLine("Введите фамилию персоны: ");
+
+        phoneBook.findInNumbersPhoneBook(firstName, lastName);
+    }
 
     private void toStringPhoneBook(){
         System.out.println(phoneBook);
@@ -86,10 +89,13 @@ public class MenuApp {
         }
     }
 
-    public String readLine(String string) {
+    private String readLine(String string) {
 
         System.out.print(string);
         return console.nextLine();
     }
+
+
+
 
 }
