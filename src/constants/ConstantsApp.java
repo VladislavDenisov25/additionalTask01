@@ -30,14 +30,14 @@ public class ConstantsApp {
     public static final String SPACE = " ";
     public static final String COMMA = ", ";
 
-    public static final String FULL_NAME_FORMAT = "Person {%s %s} ";
+    public static final String FULL_NAME_FORMAT = "{%s %s}";
     public static final String NUMBER_FORMAT = "+%s-(%s)-%s-%s-%s";
 
-    public static final String ADD_PERSON_PHONE_BOOK_INFO_1 = "Персона: %s добавлена ранее, к ней были добавлены номера: %s\n";
-    public static final String ADD_PERSON_PHONE_BOOK_INFO_2 = "Персона: %s добавлена, к ней были добавлены номера: %s\n";
+    public static final String ADD_PERSON_PHONE_BOOK_INFO_1 = "Персона: %s существует, её номер(а): %s\n";
+    public static final String ADD_PERSON_PHONE_BOOK_INFO_2 = "Персона: %s добавлена, её номер(а): %s\n";
     public static final String PERSON_NOT_FOUND = "Персона: %s не найдена в телефонной книге!\n";
 
     public static final String FIND_PHONE_NUMBER_INFO = "Номер телефона: %s принадлежит персоне: %s\n";
-    public static final String CONTAINS_VALUE_INFO = "Номер: %s не будет добавлен, он принадлежит другой персоне или уже добавлен!\n";
+    public static final String CONTAINS_VALUE_INFO = "Номер: %s не будет добавлен, он уже существует!\n";
 
 }

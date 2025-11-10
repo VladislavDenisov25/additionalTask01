@@ -38,7 +38,7 @@ public class PhoneBook {
             Set<String> number = numbers.getNumbers();
             number.addAll(validationNumbers);
         } else {
-            System.out.printf(ConstantsApp.PERSON_NOT_FOUND);
+            System.out.printf(ConstantsApp.PERSON_NOT_FOUND, person);
         }
     }
 
