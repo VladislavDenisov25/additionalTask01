@@ -1,5 +1,7 @@
 package service;
 
+import constants.ConstantsApp;
+
 import java.util.*;
 
 public class PhoneBook {
@@ -16,11 +18,11 @@ public class PhoneBook {
                 for (String valid : validationNumbers) {
                     number.add(valid);
                 }
-            System.out.printf("Персона: %s добавлена ранее, к ней были добавлены номера: %s\n", person.toString(), validationNumbers.toString());
+            System.out.printf(ConstantsApp.ADD_PERSON_PHONE_BOOK_INFO_1, person.toString(), validationNumbers.toString());
         } else {
             PhoneNumbers numbers = new PhoneNumbers(validationNumbers);
             phoneBook.put(person, numbers);
-            System.out.printf("Персона: %s добавлена, к ней были добавлены номера: %s\n", person.toString(), numbers.toString());
+            System.out.printf(ConstantsApp.ADD_PERSON_PHONE_BOOK_INFO_2, person.toString(), numbers.toString());
         }
     }
 
@@ -40,7 +42,7 @@ public class PhoneBook {
                 number.add(valid);
             }
         } else {
-            System.out.printf("Персона: %s не найдена в телефонной книге!\n");
+            System.out.printf(ConstantsApp.PERSON_NOT_FOUND);
         }
     }
 
@@ -49,7 +51,7 @@ public class PhoneBook {
             PhoneNumbers entryValue = entry.getValue();
             for (String number : entryValue.getNumbers()) {
                 if (phoneNumber.equals(number)){
-                    System.out.printf("Номер телефона: %s принадлежит персоне: %s\n", phoneNumber, entry.getKey().toString());
+                    System.out.printf(ConstantsApp.FIND_PHONE_NUMBER_INFO, phoneNumber, entry.getKey().toString());
                 }
             }
         }
@@ -77,7 +79,7 @@ public class PhoneBook {
         for (String number : arrayNumbers) {
             for (PhoneNumbers value : values) {
                 if (value.getNumbers().contains(number)) {
-                    System.out.println("Номер: " + number + " не будет добавлен, он принадлежит другой персоне или уже добавлен!\n");
+                    System.out.printf(ConstantsApp.CONTAINS_VALUE_INFO, number);
                   //  return new HashSet<>();
                     break;
                 }
@@ -95,7 +97,7 @@ public class PhoneBook {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         for (Map.Entry<Person, PhoneNumbers> entry : phoneBook.entrySet()) {
-            builder.append(entry.getKey().toString()).append(" ").append(entry.getValue().toString()).append("\n");
+            builder.append(entry.getKey().toString()).append(ConstantsApp.SPACE).append(entry.getValue().toString()).append(ConstantsApp.NEW_LINE);
         }
         return builder.toString();
     }

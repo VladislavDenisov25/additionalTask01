@@ -1,5 +1,6 @@
 package app;
 
+import constants.ConstantsApp;
 import service.PhoneBook;
 
 import java.util.Scanner;
@@ -10,29 +11,21 @@ public class MenuApp {
     private final PhoneBook phoneBook = new PhoneBook();
 
     public void run() {
-        System.out.println("Добро пожаловать в программу \"Телефонная книга\"\n");
+        System.out.println(ConstantsApp.HELLO);
         while (true) {
-            System.out.print("""
-                    Главное меню:
-                    1. Добавление персоны.
-                    2. Добавление телефона к существующей персоне.
-                    3. Поиск персоны по телефонному номеру.
-                    4. Поиск всех телефонов по персоне.
-                    5. Вывод всех записей телефонной книги.
-                    6. Выход из программы.\n
-                    """);
-            int number = readInt("Введите цифру главного меню: ");
+            System.out.print(ConstantsApp.MENU);
+            int number = readInt(ConstantsApp.INPUT_NUMBER_MENU);
 
             switch (number) {
 
                 case 1: addPerson();
                 break;
-//                case 2: addPhoneNumber();
-//                break;
-//                case 3: findPerson();
-//                break;
-//                case 4: findPhoneNumbers();
-//                break;
+                case 2: addPhoneNumber();
+                break;
+                case 3: findPerson();
+                break;
+                case 4: findPhoneNumbers();
+                break;
                 case 5: toStringPhoneBook();
                 break;
                 case 6: return;
@@ -43,34 +36,27 @@ public class MenuApp {
     }
 
     private void addPerson(){
-        String firstName = readLine("Введите имя персоны: ");
-        String lastName = readLine("Введите фамилию персоны: ");
+        String[] personName = readPersonName();
         StringBuilder bulder = new StringBuilder();
-        String number = readLine("""
-        Введите номер(а) телефона(ов) персоны, в формате \"89105559900\"
-        Если номеров несколько вводите их через пробел: 
-        """);
-        String[] numbers = number.split(" ");
-        phoneBook.addPersonInPhoneBook(firstName, lastName, numbers);
+        String number = readLine(ConstantsApp.INPUT_PHONE_NUMBERS);
+        String[] numbers = number.split(ConstantsApp.SPACE);
+        phoneBook.addPersonInPhoneBook(personName[0], personName[1], numbers);
     }
 
     private void addPhoneNumber(){
-        String firstName = readLine("Введите имя персоны: ");
-        String lastName = readLine("Введите фамилию персоны: ");
-        String number = readLine("Введите номер телефона которой будет добавлен персоне: ");
-        phoneBook.addPhoneNumbers(firstName, lastName, number);
+        String[] personName = readPersonName();
+        String number = readLine(ConstantsApp.INPUT_PHONE_NUMBER);
+        phoneBook.addPhoneNumbers(personName[0], personName[1], number);
     }
 
     private void findPerson(){
-        String number = readLine("Введите номер телефона по которому будет поиск персоны: ");
+        String number = readLine(ConstantsApp.INPUT_PHONE_NUMBER);
         phoneBook.findInPersonPhoneBook(number);
     }
 
     private void findPhoneNumbers(){
-        String firstName = readLine("Введите имя персоны: ");
-        String lastName = readLine("Введите фамилию персоны: ");
-
-        phoneBook.findInNumbersPhoneBook(firstName, lastName);
+        String[] personName = readPersonName();
+        phoneBook.findInNumbersPhoneBook(personName[0], personName[1]);
     }
 
     private void toStringPhoneBook(){
@@ -84,7 +70,7 @@ public class MenuApp {
                 System.out.print(string);
                 return Integer.parseInt(console.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println("Введите целое число согласно пункту меню!");
+                System.out.println(ConstantsApp.ERROR_NUMBER_FORMAT);
             }
         }
     }
@@ -95,7 +81,11 @@ public class MenuApp {
         return console.nextLine();
     }
 
-
+public String[] readPersonName(){
+    String firstName = readLine(ConstantsApp.INPUT_FIRST_NAME);
+    String lastName = readLine(ConstantsApp.INPUT_LAST_NAME);
+    return new String[]{firstName, lastName};
+}
 
 
 }

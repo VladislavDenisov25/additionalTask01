@@ -1,5 +1,7 @@
 package service;
 
+import constants.ConstantsApp;
+
 import java.util.Objects;
 
 public class Person {
@@ -21,10 +23,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "firstName=" + firstName  +
-                ", lastName=" + lastName +
-               "}";
+        return String.format(ConstantsApp.FULL_NAME_FORMAT, firstName, lastName);
     }
 
     @Override
