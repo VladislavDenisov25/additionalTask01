@@ -20,11 +20,11 @@ public class Person {
 
     @Override
     public boolean equals(Object obj) {
-            if (this == obj) return true;
-            if (obj == null || getClass() != obj.getClass()) return false;
-            Person other = (Person) obj;
-            return Objects.equals(this.firstName, other.firstName)
-                    && Objects.equals(this.lastName, other.lastName);
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Person other = (Person) obj;
+        return Objects.equals(this.firstName, other.firstName)
+                && Objects.equals(this.lastName, other.lastName);
     }
 
     @Override

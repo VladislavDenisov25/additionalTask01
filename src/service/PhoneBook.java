@@ -37,7 +37,7 @@ public class PhoneBook {
 
 
             PhoneNumbers newNumber = new PhoneNumbers(containsValueInPhoneBook(new String[]{phoneNumber}));
-            if (newNumber.getNumbers().isEmpty()){
+            if (newNumber.getNumbers().isEmpty()) {
                 return;
             }
 
@@ -50,32 +50,32 @@ public class PhoneBook {
         }
     }
 
-    public void findInPersonPhoneBook(String phoneNumber){
+    public void findInPersonPhoneBook(String phoneNumber) {
         for (Map.Entry<Person, PhoneNumbers> entry : phoneBook.entrySet()) {
             PhoneNumbers entryValue = entry.getValue();
             for (String number : entryValue.getNumbers()) {
-                if (phoneNumber.equals(number)){
+                if (phoneNumber.equals(number)) {
                     System.out.printf(ConstantsApp.FIND_PHONE_NUMBER_INFO, phoneNumber, entry.getKey().toString());
                 }
             }
         }
     }
 
-    public void findInNumbersPhoneBook(String firstName, String lastName){
+    public void findInNumbersPhoneBook(String firstName, String lastName) {
 
         Person person = new Person(firstName, lastName);
-        if (!containsKeyInPhoneBook(person)){
+        if (!containsKeyInPhoneBook(person)) {
             System.out.printf(ConstantsApp.PERSON_NOT_FOUND, person);
             return;
         }
 
         for (Map.Entry<Person, PhoneNumbers> entry : phoneBook.entrySet()) {
-            if (entry.getKey().equals(person)){
-                System.out.printf("У 🎩персоны: %s найден(ы) номер(а) телефона(ов): %s\n", entry.getKey(), entry.getValue().toString());
+            if (entry.getKey().equals(person)) {
+                System.out.printf(ConstantsApp.PERSON_FIND_PHONE_NUMBER, entry.getKey(), entry.getValue().toString());
                 return;
             }
         }
-        System.out.printf("У 🎩персоны: %s отсутствует(ют) номер(а) телефона(ов)\n", person);
+        System.out.printf(ConstantsApp.PERSON_NOT_PHONE_NUMBER, person);
     }
 
     private boolean containsKeyInPhoneBook(Person person) {
@@ -97,7 +97,7 @@ public class PhoneBook {
                 }
             }
         }
-        if (validationNumbers.isEmpty()){
+        if (validationNumbers.isEmpty()) {
             validationNumbers = new HashSet<>();
         }
         return validationNumbers;

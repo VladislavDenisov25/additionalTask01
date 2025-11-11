@@ -18,47 +18,54 @@ public class MenuApp {
 
             switch (number) {
 
-                case 1: addPerson();
-                break;
-                case 2: addPhoneNumber();
-                break;
-                case 3: findPerson();
-                break;
-                case 4: findPhoneNumbers();
-                break;
-                case 5: toStringPhoneBook();
-                break;
-                case 6: return;
-                default: System.out.println(ConstantsApp.ERROR_MENU_NUMBER);
-                break;
+                case 1:
+                    addPerson();
+                    break;
+                case 2:
+                    addPhoneNumber();
+                    break;
+                case 3:
+                    findPerson();
+                    break;
+                case 4:
+                    findPhoneNumbers();
+                    break;
+                case 5:
+                    toStringPhoneBook();
+                    break;
+                case 6:
+                    return;
+                default:
+                    System.out.println(ConstantsApp.ERROR_MENU_NUMBER);
+                    break;
             }
         }
     }
 
-    private void addPerson(){
+    private void addPerson() {
         String[] personName = readPersonName();
         String number = readLine(ConstantsApp.INPUT_PHONE_NUMBERS);
         String[] numbers = number.split(ConstantsApp.SPACE);
         phoneBook.addPersonInPhoneBook(personName[0], personName[1], numbers);
     }
 
-    private void addPhoneNumber(){
+    private void addPhoneNumber() {
         String[] personName = readPersonName();
         String number = readLine(ConstantsApp.INPUT_PHONE_NUMBER);
         phoneBook.addPhoneNumbers(personName[0], personName[1], number);
     }
 
-    private void findPerson(){
+    private void findPerson() {
         String number = readLine(ConstantsApp.INPUT_PHONE_NUMBER);
         phoneBook.findInPersonPhoneBook(number);
     }
 
-    private void findPhoneNumbers(){
+    private void findPhoneNumbers() {
         String[] personName = readPersonName();
         phoneBook.findInNumbersPhoneBook(personName[0], personName[1]);
     }
 
-    private void toStringPhoneBook(){
+    private void toStringPhoneBook() {
         System.out.println(phoneBook);
     }
 
@@ -80,11 +87,9 @@ public class MenuApp {
         return console.nextLine();
     }
 
-public String[] readPersonName(){
-    String firstName = readLine(ConstantsApp.INPUT_FIRST_NAME);
-    String lastName = readLine(ConstantsApp.INPUT_LAST_NAME);
-    return new String[]{firstName, lastName};
-}
-
-
+    public String[] readPersonName() {
+        String firstName = readLine(ConstantsApp.INPUT_FIRST_NAME);
+        String lastName = readLine(ConstantsApp.INPUT_LAST_NAME);
+        return new String[]{firstName, lastName};
+    }
 }

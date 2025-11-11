@@ -41,8 +41,10 @@ public class ConstantsApp {
     public static final String PERSON_NOT_FOUND = "🎩Персона: %s не найдена в 📖телефонной книге!\n";
 
     public static final String FIND_PHONE_NUMBER_INFO = "☎️Номер телефона: %s принадлежит 🎩персоне: %s\n";
-    public static final String CONTAINS_VALUE_INFO = "☎️Номер телефона: %s не будет добавлен, он уже записан в 📖телефонную книгу!\n";
+    public static final String PERSON_FIND_PHONE_NUMBER = "У 🎩персоны: %s найден(ы) номер(а) телефона(ов): %s\n";
+    public static final String PERSON_NOT_PHONE_NUMBER = "У 🎩персоны: %s отсутствует(ют) номер(а) телефона(ов)\n";
 
+    public static final String CONTAINS_VALUE_INFO = "☎️Номер телефона: %s не будет добавлен, он уже записан в 📖телефонную книгу!\n";
 
 
 }
