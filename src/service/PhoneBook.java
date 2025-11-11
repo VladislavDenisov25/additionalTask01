@@ -7,18 +7,24 @@ import java.util.*;
 public class PhoneBook {
     private static final HashMap<Person, PhoneNumbers> phoneBook = new HashMap<>();
 
+    static {
+        HashSet<String> strings = new HashSet<>();
+        strings.add("89105648763");
+        phoneBook.put(new Person("vlad", "denisov"), new PhoneNumbers(strings));
+    }
+
     public void addPersonInPhoneBook(String firstName, String lastName, String... arrayNumbers) {
 
         Person person = new Person(firstName, lastName);
-        HashSet<String> validationNumbers = containsValueInPhoneBook(arrayNumbers);
+        PhoneNumbers newNumbers = new PhoneNumbers(containsValueInPhoneBook(arrayNumbers));
 
         if (containsKeyInPhoneBook(person)) {
             PhoneNumbers numbers = phoneBook.get(person);
             Set<String> number = numbers.getNumbers();
-            number.addAll(validationNumbers);
-            System.out.printf(ConstantsApp.ADD_PERSON_PHONE_BOOK_INFO_1, person, validationNumbers);
+            number.addAll(newNumbers.getNumbers());
+            System.out.printf(ConstantsApp.ADD_PERSON_PHONE_BOOK_INFO_1, person, newNumbers);
         } else {
-            PhoneNumbers numbers = new PhoneNumbers(validationNumbers);
+            PhoneNumbers numbers = new PhoneNumbers(newNumbers.getNumbers());
             phoneBook.put(person, numbers);
             System.out.printf(ConstantsApp.ADD_PERSON_PHONE_BOOK_INFO_2, person, numbers);
         }
@@ -87,9 +93,10 @@ public class PhoneBook {
                 if (value.getNumbers().contains(number)) {
                     System.out.printf(ConstantsApp.CONTAINS_VALUE_INFO, number);
                     break;
+                } else {
+                    validationNumbers.add(number);
                 }
             }
-            validationNumbers.add(number);
         }
         if (validationNumbers.isEmpty()){
             validationNumbers = new HashSet<>();
