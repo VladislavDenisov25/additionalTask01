@@ -36,6 +36,8 @@ public class ConstantsApp {
 
     public static final String ADD_PERSON_PHONE_BOOK_INFO_1 = "🎩Персона: %s уже существует в 📖телефонной книге, к ней добавлен(ы) ☎️номер(а): %s\n";
     public static final String ADD_PERSON_PHONE_BOOK_INFO_2 = "🎩Персона: %s добавлена, её ☎️номер(а): %s\n";
+
+    public static final String PERSON_ADD_PHONE_NUMBER = "🎩Персоне: %s добавлен новый ☎️номер телефона: %s \n";
     public static final String PERSON_NOT_FOUND = "🎩Персона: %s не найдена в 📖телефонной книге!\n";
 
     public static final String FIND_PHONE_NUMBER_INFO = "☎️Номер телефона: %s принадлежит 🎩персоне: %s\n";

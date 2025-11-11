@@ -35,17 +35,16 @@ public class PhoneBook {
         Person person = new Person(firstName, lastName);
         if (containsKeyInPhoneBook(person)) {
 
-            HashSet<String> validationNumbers = containsValueInPhoneBook(new String[]{phoneNumber});
-            if (validationNumbers.isEmpty()){
-//                System.out.printf("");
-                return; // что тут происходит
+
+            PhoneNumbers newNumber = new PhoneNumbers(containsValueInPhoneBook(new String[]{phoneNumber}));
+            if (newNumber.getNumbers().isEmpty()){
+                return;
             }
 
             PhoneNumbers numbers = phoneBook.get(person);
             Set<String> number = numbers.getNumbers();
-            number.addAll(validationNumbers);
-//            System.out.printf("");
-            // успешное добавление
+            number.addAll(newNumber.getNumbers());
+            System.out.printf(ConstantsApp.PERSON_ADD_PHONE_NUMBER, person, newNumber);
         } else {
             System.out.printf(ConstantsApp.PERSON_NOT_FOUND, person);
         }
