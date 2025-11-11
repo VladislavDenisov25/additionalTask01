@@ -27,11 +27,16 @@ public class ConstantsApp {
     public static final String INPUT_FIRST_NAME = "Введите имя персоны: ";
     public static final String INPUT_LAST_NAME = "Введите фамилию персоны: ";
 
+    public static final String NUMBER = "☎️номер(а): ";
+    public static final String PERSON = "🎩Персона: ";
+    public static final String PHONE_BOOK = "📖 Телефонная книга";
+
     public static final String NEW_LINE = "\n";
     public static final String SPACE = " ";
     public static final String COMMA = ", ";
 
     public static final String FULL_NAME_FORMAT = "{%s %s}";
+    public static final String BOOK_FORMAT = "%35s%n";
     public static final String NUMBER_FORMAT = "+%s-(%s)-%s-%s-%s"; // +7-(999)-123-45-67
 
     public static final String ADD_PERSON_PHONE_BOOK_INFO_1 = "🎩Персона: %s уже существует в 📖телефонной книге, к ней добавлен(ы) ☎️номер(а): %s\n";

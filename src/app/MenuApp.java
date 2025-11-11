@@ -66,6 +66,7 @@ public class MenuApp {
     }
 
     private void toStringPhoneBook() {
+        System.out.printf(ConstantsApp.BOOK_FORMAT, ConstantsApp.PHONE_BOOK);
         System.out.println(phoneBook);
     }
 

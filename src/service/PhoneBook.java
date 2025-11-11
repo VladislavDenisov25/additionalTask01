@@ -7,12 +7,6 @@ import java.util.*;
 public class PhoneBook {
     private static final HashMap<Person, PhoneNumbers> phoneBook = new HashMap<>();
 
-    static {
-        HashSet<String> strings = new HashSet<>();
-        strings.add("89105648763");
-        phoneBook.put(new Person("vlad", "denisov"), new PhoneNumbers(strings));
-    }
-
     public void addPersonInPhoneBook(String firstName, String lastName, String... arrayNumbers) {
 
         Person person = new Person(firstName, lastName);
@@ -107,7 +101,8 @@ public class PhoneBook {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         for (Map.Entry<Person, PhoneNumbers> entry : phoneBook.entrySet()) {
-            builder.append(entry.getKey().toString()).append(ConstantsApp.SPACE).append(entry.getValue().toString()).append(ConstantsApp.NEW_LINE);
+            builder.append(ConstantsApp.PERSON).append(entry.getKey().toString()).append(ConstantsApp.SPACE)
+                    .append(ConstantsApp.NUMBER).append(entry.getValue().toString()).append(ConstantsApp.NEW_LINE);
         }
         return builder.toString();
     }
