@@ -31,12 +31,15 @@ public class PhoneBook {
 
             HashSet<String> validationNumbers = containsValueInPhoneBook(new String[]{phoneNumber});
             if (validationNumbers.isEmpty()){
-                return;
+//                System.out.printf("");
+                return; // что тут происходит
             }
 
             PhoneNumbers numbers = phoneBook.get(person);
             Set<String> number = numbers.getNumbers();
             number.addAll(validationNumbers);
+//            System.out.printf("");
+            // успешное добавление
         } else {
             System.out.printf(ConstantsApp.PERSON_NOT_FOUND, person);
         }
@@ -56,11 +59,18 @@ public class PhoneBook {
     public void findInNumbersPhoneBook(String firstName, String lastName){
 
         Person person = new Person(firstName, lastName);
+        if (!containsKeyInPhoneBook(person)){
+            System.out.printf(ConstantsApp.PERSON_NOT_FOUND, person);
+            return;
+        }
+
         for (Map.Entry<Person, PhoneNumbers> entry : phoneBook.entrySet()) {
             if (entry.getKey().equals(person)){
-                System.out.println(entry.getValue().toString());
+                System.out.printf("У 🎩персоны: %s найден(ы) номер(а) телефона(ов): %s\n", entry.getKey(), entry.getValue().toString());
+                return;
             }
         }
+        System.out.printf("У 🎩персоны: %s отсутствует(ют) номер(а) телефона(ов)\n", person);
     }
 
     private boolean containsKeyInPhoneBook(Person person) {
@@ -76,13 +86,11 @@ public class PhoneBook {
             for (PhoneNumbers value : values) {
                 if (value.getNumbers().contains(number)) {
                     System.out.printf(ConstantsApp.CONTAINS_VALUE_INFO, number);
-                  //  return new HashSet<>();
                     break;
                 }
             }
             validationNumbers.add(number);
         }
-
         if (validationNumbers.isEmpty()){
             validationNumbers = new HashSet<>();
         }

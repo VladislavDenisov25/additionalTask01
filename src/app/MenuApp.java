@@ -29,7 +29,7 @@ public class MenuApp {
                 case 5: toStringPhoneBook();
                 break;
                 case 6: return;
-                default: System.out.println();
+                default: System.out.println(ConstantsApp.ERROR_MENU_NUMBER);
                 break;
             }
         }

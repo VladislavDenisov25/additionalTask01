@@ -16,19 +16,19 @@ public class PhoneNumbers {
     }
 
     @Override
-    public String toString() {  // +7-(999)-123-45-67
+    public String toString() {
 
         if (numbers.isEmpty()) {
             return ConstantsApp.SPACE;
         }
-        StringBuilder bulder = new StringBuilder();
+        StringBuilder builder = new StringBuilder();
         for (String number : numbers) {
-            bulder.append(String.format(ConstantsApp.NUMBER_FORMAT,
+            builder.append(String.format(ConstantsApp.NUMBER_FORMAT,
                     number.charAt(0), number.substring(1, 4), number.substring(4, 7),
                     number.substring(7, 9), number.substring(9, 11))).append(ConstantsApp.COMMA);
 
         }
-        bulder.setCharAt(bulder.length() - 2, '.');
-        return bulder.toString();
+        builder.setCharAt(builder.length() - 2, '.');
+        return builder.toString();
     }
 }
